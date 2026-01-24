@@ -1,0 +1,30 @@
+# =========================
+# Python Virtual Environments
+# =========================
+.venv/
+venv/
+
+# =========================
+# Python Cache & Test Artifacts
+# =========================
+__pycache__/
+*.py[cod]
+.pytest_cache/
+
+# =========================
+# IDE / Editor Settings
+# =========================
+.idea/
+.vscode/
+
+# =========================
+# Logs & Runtime Files
+# =========================
+logs/
+*.log
+
+# =========================
+# Environment Variables
+# =========================
+.env
+.env.*

@@ -88,7 +88,7 @@ pip install -r requirements.txt
 
 ```
 Usage
-Start the FastAPI backend
+## Start the FastAPI backend
 ```
 uvicorn backend.app.main:app --reload
 
@@ -120,7 +120,8 @@ Analytics & Dashboard
 Expense data is processed using Pandas
 Aggregations and trends are computed server-side
 Interactive visualizations are built using Streamlit
-Run Streamlit dashboard
+
+## Run Streamlit dashboard
     ```
     streamlit run analytics/streamlit_app.py
     ```

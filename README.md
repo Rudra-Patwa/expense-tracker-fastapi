@@ -1,139 +1,191 @@
-# Expense Tracker App 🧾
+# Expense Tracker & Analytics App
 
-**A full-stack Python backend application to track personal expenses, analyze spending patterns, and generate insights. Built with FastAPI, SQLAlchemy, and Python.**
+A full-stack expense tracking and analytics application that allows users to record daily expenses, analyze spending patterns, and generate insights through APIs and interactive dashboards.
 
-# Table of Contents
+The backend is built using **FastAPI** with a clean REST architecture, while analytics and visual exploration are supported using **Pandas** and **Streamlit**. The project also includes automated testing with **Pytest** and structured logging for production readiness.
 
-    Features
-    Tech Stack
-    Installation
-    Usage
-    API Endpoints
-    Analytics
-    Contributing
-    License
-    Features
-    Add, update, and delete expenses
+---
 
-Track expenses by category, payment mode, and date
-Generate category-wise and monthly trend analytics
-Clean and validated input data
-Logging for backend operations
-Ready for local or cloud deployment
+## Table of Contents
 
-Tech Stack
-Layer	Technology
-Backend	Python 3.11, FastAPI
-Database	SQLite (default), MySQL (optional)
-ORM	SQLAlchemy
-Logging	Python logging module
-API Docs	FastAPI Swagger (/docs)
-Installation
+- [Features](#features)
+- [Tech Stack](#tech-stack)
+- [Project Architecture](#project-architecture)
+- [Installation](#installation)
+- [Usage](#usage)
+- [API Endpoints](#api-endpoints)
+- [Analytics & Dashboard](#analytics--dashboard)
+- [Testing](#testing)
+- [Logging](#logging)
+- [Future Improvements](#future-improvements)
+- [Contributing](#contributing)
+- [License](#license)
+
+---
+
+##Features
+
+- Add, update, and delete expenses
+- Track expenses by:
+  - Category
+  - Payment mode
+  - Date
+- RESTful API design using FastAPI
+- Real-time analytics using Pandas
+- Interactive expense dashboards using Streamlit
+- Category-wise and monthly spending insights
+- Input validation using Pydantic
+- Structured logging for backend operations
+- Automated API testing using Pytest
+- Ready for local development and cloud deployment
+
+---
+
+##Tech Stack
+
+| Layer | Technology |
+|-----|-----------|
+| Backend API | FastAPI |
+| Server | Uvicorn |
+| Database | SQLite (default), MySQL (optional) |
+| ORM | SQLAlchemy |
+| Data Analysis | Pandas |
+| Dashboard | Streamlit |
+| Validation | Pydantic |
+| Testing | Pytest |
+| Logging | Python `logging` |
+| API Docs | Swagger UI (`/docs`) |
+
+---
+
+---
+
+## Installation
 
 ### Clone the repository
 
+```bash
 git clone https://github.com/Rudra-Patwa/expense_tracker.git
 cd expense-tracker
-
+```
 Create a virtual environment
-
+```
 python -m venv .venv
-
-
+```
 Activate the virtual environment
-
-Windows (PowerShell)
-
+Windows
+```
 .venv\Scripts\activate
 
-
-macOS/Linux
-
+```
+macOS / Linux
+```
 source .venv/bin/activate
-
-
+```
 Install dependencies
-
+```
 pip install -r requirements.txt
 
+```
 Usage
+Start the FastAPI backend
+```
+uvicorn backend.app.main:app --reload
 
-Run the server
-
-**uvicorn backend.app.main:app --reload**
-
-
-Access the app
-Open your browser and go to:
-
+```
+Open API documentation
+Visit:
+```
 http://127.0.0.1:8000/docs
 
-
-Swagger UI to interact with all endpoints
-
-Test adding, viewing, and analyzing expenses
-
+```
+Use Swagger UI to interact with all API endpoints.
 API Endpoints
-Expenses
-Method	Endpoint	Description
-POST	/expenses/	Add a new expense
-GET	/expenses/	List all expenses
-PUT	/expenses/{id}	Update an expense
-DELETE	/expenses/{id}	Delete an expense
+| Method | Endpoint         | Description        |
+| -----: | ---------------- | ------------------ |
+|   POST | `/expenses/`     | Add a new expense  |
+|    GET | `/expenses/`     | Fetch all expenses |
+|    PUT | `/expenses/{id}` | Update an expense  |
+| DELETE | `/expenses/{id}` | Delete an expense  |
+
+
 Analytics
-Method	Endpoint	Description
-GET	/analytics/category-wise	Get total expenses per category
-GET	/analytics/monthly-trend	Get monthly spending trends
-GET	/analytics/summary	Get overall expense summary
-Example Request
+| Method | Endpoint                   | Description                |
+| -----: | -------------------------- | -------------------------- |
+|    GET | `/analytics/category-wise` | Total expense per category |
+|    GET | `/analytics/monthly-trend` | Monthly spending trend     |
+|    GET | `/analytics/summary`       | Overall expense summary    |
 
-**Add an expense:**
+Analytics & Dashboard
+Expense data is processed using Pandas
+Aggregations and trends are computed server-side
+Interactive visualizations are built using Streamlit
+Run Streamlit dashboard
+    ```
+    streamlit run analytics/streamlit_app.py
+    ```
 
-POST /expenses/
-{
-  "amount": 500,
-  "category": "Food",
-  "description": "Lunch at cafe",
-  "expense_date": "2026-01-24",
-  "payment_mode": "Cash"
-}
+Dashboard Features
 
+    Category-wise expense distribution
+    Monthly spending trends
+    Expense summaries and insights
 
-Response:
-
-{
-  "id": 1,
-  "amount": 500,
-  "category": "Food",
-  "description": "Lunch at cafe",
-  "expense_date": "2026-01-24",
-  "payment_mode": "Cash"
-}
-
-Analytics Example
-
-Category-wise expenses:
-
-GET /analytics/category-wise
+    Testing
 
 
-Response:
 
-[
-  {"category": "Food", "total_amount": 1500.0},
-  {"category": "Transport", "total_amount": 800.0},
-  {"category": "Shopping", "total_amount": 1200.0}
-]
+This project includes automated API tests written using Pytest.
+Run tests
+
+```
+pytest
+```
+
+Test Coverage
+
+    Expense CRUD operations
+    Analytics endpoints
+    Input validation and edge cases
+
+Logging
+
+    Centralized logging using Python’s logging module
+    Logs include:
+        API request
+        Errors and exceptions
+        Analytics processing steps
+    Helps in debugging and production monitoring
+
+Future Improvements
+
+    Authentication & user accounts
+    JWT-based secure APIs
+    Dockerization
+    Cloud deployment (AWS / Railway / Render)
+    Advanced analytics and forecasting
+    Export reports (CSV / PDF)
 
 Contributing
+1. Fork the repository
+2. Create a new feature branch
+    ```
+    git checkout -b feature/your-feature
+    ```
 
-Fork the repository
+3. Commit your changes
+```
+git commit -m "feat: add your feature"
+```
+4. Push and open a Pull Request
 
-Create a new branch
+License.
+This project is licensed under the MIT License.
 
-git checkout -b feature/your-feature
 
+---
 
-Make changes & commit
+## ✅ Recommended Commit Message
 
-git commit -m "Add feature"
+```bash
+git commit -m "docs: add complete README with setup, APIs, analytics, Streamlit dashboard, and 
